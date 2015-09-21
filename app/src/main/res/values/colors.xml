@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="orange_color">#F16421 </color>
+    <color name="gray_color">#AAAAAA</color>
+    <color name="gray_dark_color">#666666</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="actionbar_text">#FFFFFF</color>
+    <color name="actionbar_background">#F16421</color>
+
+</resources>
