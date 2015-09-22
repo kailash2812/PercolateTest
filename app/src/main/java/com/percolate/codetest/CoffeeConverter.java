@@ -24,7 +24,6 @@ public class CoffeeConverter implements Converter {
         try {
             return mapper.readValue(body.in(), javaType);
         } catch (IOException e) {
-            Log.d("", "kailash exception " + e.toString());
             throw new ConversionException(e);
         }
     }
@@ -34,7 +33,6 @@ public class CoffeeConverter implements Converter {
         try {
             String charset = "UTF-8";
             String json = mapper.writeValueAsString(object);
-            Log.d("", "kailash json " + json);
             return new JsonTypedOutput(json.getBytes(charset));
         } catch (IOException e) {
             throw new AssertionError(e);

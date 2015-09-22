@@ -1,6 +1,5 @@
 package com.percolate.codetest.api;
 
-
 import com.percolate.codetest.CoffeeConverter;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -9,6 +8,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 
+/**
+ * Percolate Rest Client using RestAdapter
+ */
 public class PercolateRestClient {
 
     private static PercolateRestApi REST_CLIENT;

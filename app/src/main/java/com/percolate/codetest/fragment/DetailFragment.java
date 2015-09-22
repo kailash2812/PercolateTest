@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +20,6 @@ import com.percolate.codetest.CoffeeHelper;
 import com.percolate.codetest.Constants;
 import com.percolate.codetest.R;
 import com.percolate.codetest.api.PercolateRestClient;
-import com.percolate.codetest.resolver.CoffeeColumns;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -31,19 +31,31 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+/**
+ * Detail Fragment to display coffee item details
+ */
 public class DetailFragment extends Fragment {
 
+    //tag for Logging
     public static final String TAG = DetailFragment.class.getSimpleName();
 
-    Context mContext;
-    String coffeeId;
-    TextView nameTextView, descTextView, updatedTextView;
-    ImageView imageView;
-    int numWeeks;
-    String weeksText;
-    Coffee coffee;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
+    Context mContext;
+    String coffeeId, weeksText;
+    int numWeeks;
+    Coffee coffee;
+
+    TextView nameTextView, descTextView, updatedTextView;
+    ImageView imageView;
+
+    /**
+     * Detail Fragment new Instance method
+     *
+     * @param context
+     * @param id
+     * @return DetailFragment Instance
+     */
     public static DetailFragment newInstance(Context context, String id) {
         DetailFragment fragment = new DetailFragment();
         fragment.mContext = context;
@@ -51,6 +63,11 @@ public class DetailFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onActivityCreated
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -76,19 +93,29 @@ public class DetailFragment extends Fragment {
         updatedTextView = (TextView) view.findViewById(R.id.updatedText);
         imageView = (ImageView) view.findViewById(R.id.imageView);
 
-        PercolateRestClient.get().getCoffeeById(coffeeId, Constants.API_KEY, new Callback<Coffee>() {
+        coffee = CoffeeHelper.getCoffeeById(mContext,
+                getActivity().getResources().getString(R.string.content_provider_authority),
+                coffeeId);
 
+        nameTextView.setText(coffee.getName().toString());
+        descTextView.setText(coffee.getDesc().toString());
+
+        if (!coffee.getImageUrl().isEmpty()) {
+            Picasso.with(mContext)
+                    .load(coffee.getImageUrl())
+                    .placeholder(R.drawable.drip_white)
+                    .into(imageView);
+        }
+
+        PercolateRestClient.get().getCoffeeById(coffeeId, Constants.API_KEY, new Callback<Coffee>() {
             @Override
-            public void success(Coffee _coffee, Response response) {
-                coffee = _coffee;
-                nameTextView.setText(coffee.getName().toString());
-                descTextView.setText(coffee.getDesc().toString());
+            public void success(Coffee coffeeObj, Response response) {
                 try {
                     CoffeeHelper.updateCoffee(mContext,
                             getActivity().getResources().getString(R.string.content_provider_authority),
-                            coffee.getId(), coffee);
+                            coffeeObj.getId(), coffeeObj);
 
-                    Date date = sdf.parse(coffee.getLastUpdatedAt().toString());
+                    Date date = sdf.parse(coffeeObj.getLastUpdatedAt().toString());
 
                     numWeeks = getWeeksBetween(date, new Date());
                     if (numWeeks > 0) {
@@ -104,12 +131,6 @@ public class DetailFragment extends Fragment {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-                if (!coffee.getImageUrl().isEmpty()) {
-                    Picasso.with(mContext)
-                            .load(coffee.getImageUrl())
-                            .placeholder(R.drawable.drip_white)
-                            .into(imageView);
                 }
             }
 
@@ -149,32 +170,29 @@ public class DetailFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // TODO Add your menu entries here
         getActivity().getMenuInflater().inflate(R.menu.menu_detail, menu);
-
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+        Button button = (Button) menuItem.getActionView().findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (coffee != null) {
+                    Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    shareIntent.setType("*/*");
+                    shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, coffee.getName());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, coffee.getDesc() + coffee.getImageUrl());
+                    startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
+                }
+            }
+        });
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.home:
+            case android.R.id.home:
                 getActivity().onBackPressed();
-                return true;
-            case R.id.action_share:
-                menuItem.getActionView().setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d(TAG, "kailash on CLick");
-                        if (coffee != null) {
-                            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                            shareIntent.setType("*/*");
-                            shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, coffee.getName());
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, coffee.getDesc() + coffee.getImageUrl()); // <- String
-                            startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_using)));
-                        }
-                    }
-                });
                 return true;
         }
         return (super.onOptionsItemSelected(menuItem));

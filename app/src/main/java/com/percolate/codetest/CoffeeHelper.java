@@ -45,7 +45,7 @@ public class CoffeeHelper {
         return rows > 0 ? true : false;
     }
 
-    public static Coffee getCoffee(Context context, String authority,
+    public static Coffee getCoffeeById(Context context, String authority,
                                    String coffeeId) {
 
         Cursor c = null;

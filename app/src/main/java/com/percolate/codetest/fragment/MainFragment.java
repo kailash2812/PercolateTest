@@ -31,6 +31,9 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+/**
+ * Main Fragment loading list items of coffee objects
+ */
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //tag for logging
@@ -45,7 +48,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     //Cursor Adapter for coffee objects
     CoffeeCursorAdapter mAdapter;
 
-    //listview for coffee items
+    //list view for coffee items
     ListView listView;
 
     public static MainFragment newInstance(Context context) {
@@ -114,12 +117,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public Loader<Cursor> onCreateLoader(int loaderID, Bundle bundle) {
-    /*
-     * Takes action based on the ID of the Loader that's being created
-     */
         switch (loaderID) {
             case COFFEE_LOADER:
-                // Returns a new CursorLoader
                 return new CursorLoader(
                         this.getActivity(),
                         CoffeeColumns.getCONTENT_URI(getActivity().getResources().getString(R.string.content_provider_authority)),
@@ -129,35 +128,17 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                         null
                 );
             default:
-                // An invalid id was passed in
                 return null;
         }
     }
 
-    /*
- * Defines the callback that CursorLoader calls
- * when it's finished its query
- */
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-    /*
-     * Moves the query results into the adapter, causing the
-     * ListView fronting this adapter to re-display
-     */
         mAdapter.changeCursor(cursor);
     }
 
-    /*
- * Invoked when the CursorLoader is being reset. For example, this is
- * called if the data in the provider changes and the Cursor becomes stale.
- */
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
-    /*
-     * Clears out the adapter's reference to the Cursor.
-     * This prevents memory leaks.
-     */
         mAdapter.changeCursor(null);
     }
 }

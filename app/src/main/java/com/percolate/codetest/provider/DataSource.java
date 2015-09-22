@@ -16,14 +16,15 @@ import com.percolate.codetest.R;
 
 public class DataSource {
 
-    private static String LOG_TAG = DataSource.class.getSimpleName();
+    //tag for logging
+    private static String TAG = DataSource.class.getSimpleName();
 
     private static SqlHelper sqlHelper;
     private static String DATABASE_NAME;
     public static final int VERSION = 2;
 
     /**
-     * DataSource Constructor for Wilton. The constructor is responsible for creating SQLHelper
+     * DataSource Constructor for Percolate. The constructor is responsible for creating SQLHelper
      * and providing a name for the database
      */
     public DataSource(Context context) {
