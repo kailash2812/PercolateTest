@@ -1,4 +1,4 @@
-package com.percolate.codetest;
+package com.percolate.codetest.utils;
 
 public class Constants {
 

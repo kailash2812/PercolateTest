@@ -17,10 +17,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.percolate.codetest.Coffee;
-import com.percolate.codetest.CoffeeCursorAdapter;
-import com.percolate.codetest.CoffeeHelper;
-import com.percolate.codetest.Constants;
-import com.percolate.codetest.DetailActivity;
+import com.percolate.codetest.adapter.CoffeeCursorAdapter;
+import com.percolate.codetest.utils.CoffeeHelper;
+import com.percolate.codetest.utils.Constants;
+import com.percolate.codetest.activity.DetailActivity;
 import com.percolate.codetest.R;
 import com.percolate.codetest.api.PercolateRestClient;
 import com.percolate.codetest.resolver.CoffeeColumns;

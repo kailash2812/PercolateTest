@@ -1,9 +1,11 @@
-package com.percolate.codetest;
+package com.percolate.codetest.activity;
 
 import android.content.Context;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.percolate.codetest.R;
 import com.percolate.codetest.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {

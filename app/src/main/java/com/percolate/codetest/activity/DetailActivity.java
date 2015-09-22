@@ -1,21 +1,14 @@
-package com.percolate.codetest;
+package com.percolate.codetest.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.MenuCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
+import com.percolate.codetest.utils.Constants;
+import com.percolate.codetest.R;
 import com.percolate.codetest.fragment.DetailFragment;
 
 public class DetailActivity extends AppCompatActivity {

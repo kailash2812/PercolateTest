@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.percolate.codetest.Coffee;
-import com.percolate.codetest.CoffeeHelper;
-import com.percolate.codetest.Constants;
+import com.percolate.codetest.utils.CoffeeHelper;
+import com.percolate.codetest.utils.Constants;
 import com.percolate.codetest.R;
 import com.percolate.codetest.api.PercolateRestClient;
 import com.squareup.picasso.Picasso;

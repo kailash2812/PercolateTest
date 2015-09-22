@@ -1,4 +1,4 @@
-package com.percolate.codetest;
+package com.percolate.codetest.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +10,7 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.percolate.codetest.R;
 import com.percolate.codetest.resolver.CoffeeColumns;
 import com.squareup.picasso.Picasso;
 

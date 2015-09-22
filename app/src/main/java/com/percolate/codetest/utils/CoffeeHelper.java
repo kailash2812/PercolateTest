@@ -1,14 +1,11 @@
-package com.percolate.codetest;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package com.percolate.codetest.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
+import com.percolate.codetest.Coffee;
 import com.percolate.codetest.resolver.CoffeeColumns;
 
 public class CoffeeHelper {

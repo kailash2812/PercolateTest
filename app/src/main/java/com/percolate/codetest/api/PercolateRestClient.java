@@ -1,9 +1,7 @@
 package com.percolate.codetest.api;
 
-import com.percolate.codetest.CoffeeConverter;
+import com.percolate.codetest.utils.CoffeeConverter;
 import com.squareup.okhttp.OkHttpClient;
-
-import org.codehaus.jackson.map.ObjectMapper;
 
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;

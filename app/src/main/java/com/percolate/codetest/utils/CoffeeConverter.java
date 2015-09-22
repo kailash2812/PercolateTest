@@ -1,4 +1,4 @@
-package com.percolate.codetest;
+package com.percolate.codetest.utils;
 
 import android.util.Log;
 
