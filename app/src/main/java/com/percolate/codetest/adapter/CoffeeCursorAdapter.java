@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class CoffeeCursorAdapter extends CursorAdapter {
 
+    //View Holder to hold listView Item views
     private static class ViewHolder {
         TextView nameTextView;
         TextView descTextView;

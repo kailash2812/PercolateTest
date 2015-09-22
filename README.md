@@ -18,7 +18,7 @@ Assumptions
 
 1. This task can be achieved with and without using database and directly loading items in ListView.
 Since its effective & best practise I used databases (also added content provider if the data needs to be shared across)
-to store the items and Cursor loader to load items to Cursor Adapter.
+to store the items and Cursor loader is used to to load items to Cursor Adapter.
 2. Sometimes some of the items contents are empty (only have id) in api/coffee/ call. I am loading all items whether they are empty or not
 Since the problem statement doesn't define whether to show empty items or not.
 3. Used Fragments and Activities to make the application modular and fragments can be reused.
