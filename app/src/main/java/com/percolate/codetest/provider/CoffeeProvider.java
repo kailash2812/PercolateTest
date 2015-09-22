@@ -19,7 +19,7 @@ import com.percolate.codetest.R;
 public class CoffeeProvider extends ContentProvider {
 
     @SuppressWarnings("unused")
-    private static String LOG_TAG = CoffeeProvider.class.getSimpleName();
+    private static String TAG = CoffeeProvider.class.getSimpleName();
 
     private static DataSource dataSource;
     private static Context context;

@@ -21,7 +21,7 @@ public class DataSource {
 
     private static SqlHelper sqlHelper;
     private static String DATABASE_NAME;
-    public static final int VERSION = 2;
+    public static final int VERSION = 1;
 
     /**
      * DataSource Constructor for Percolate. The constructor is responsible for creating SQLHelper

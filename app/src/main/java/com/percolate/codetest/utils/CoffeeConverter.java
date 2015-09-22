@@ -1,7 +1,5 @@
 package com.percolate.codetest.utils;
 
-import android.util.Log;
-
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.JavaType;
 

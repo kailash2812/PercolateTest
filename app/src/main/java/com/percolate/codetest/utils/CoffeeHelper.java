@@ -12,6 +12,7 @@ import com.percolate.codetest.resolver.CoffeeColumns;
  * Coffee Helper for database operations.
  */
 public class CoffeeHelper {
+
     //tag for logging
     private static final String TAG = CoffeeHelper.class.getSimpleName();
 

@@ -64,7 +64,7 @@ public class SqlHelper extends SQLiteOpenHelper {
      */
     private void upgradeDatabase(SQLiteDatabase db, int oldVersion,
                                  int newVersion) {
-        while ((oldVersion < newVersion) && newVersion == 8) {
+        while (oldVersion < newVersion) {
 
             String upgradeQuery1 = "DROP TABLE IF EXISTS "
                     + CoffeeProvider.COFFEE_TABLE;
