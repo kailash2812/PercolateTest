@@ -8,7 +8,11 @@ import android.net.Uri;
 import com.percolate.codetest.Coffee;
 import com.percolate.codetest.resolver.CoffeeColumns;
 
+/**
+ * Coffee Helper for database operations.
+ */
 public class CoffeeHelper {
+    //tag for logging
     private static final String TAG = CoffeeHelper.class.getSimpleName();
 
     public static Uri insertCoffeeObject(Context context, String authority,

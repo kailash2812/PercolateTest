@@ -18,10 +18,11 @@ Assumptions
 1. This task can be achieved with and without using database and directly loading items in ListView.
 Since its effective & best practise I used databases (also added content provider if the data needs to be shared across)
 to store the items and Cursor loader to load items to Cursor Adapter.
-2. Lot of the items contents are empty (only have id) in api/coffee/ call. I am loading all items whether they are empty or not
+2. Some of the items contents are empty (only have id) in api/coffee/ call. I am loading all items whether they are empty or not
 Since the problem statement doesnt define whether to show empty items or not.
 3. Used Fragments and Activities to make the application modular and fragments can be reused.
-4. Last updated was in weeks in storyboard. so calculated no of weeks from last updated time and now and displayed time in weeks.
+4. Last updated was in weeks in storyboard. so calculated no of weeks from last updated time and now and displayed time in weeks. if less than a week
+last updated time would be the time obtained from the call.
 5. There is no clear definition of what share should do in requirements. I assumed to share name, desc and image link. Also used
 Action Layout to achieve share button
 6. Layouts spacings and font sizes dimens are decided approximately to match story board look

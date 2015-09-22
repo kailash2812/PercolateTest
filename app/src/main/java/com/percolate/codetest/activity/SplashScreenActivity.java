@@ -9,6 +9,9 @@ import android.widget.ImageView;
 
 import com.percolate.codetest.R;
 
+/**
+ * Splash Screen Activity
+ */
 public class SplashScreenActivity extends Activity {
 
     // Splash screen timer
