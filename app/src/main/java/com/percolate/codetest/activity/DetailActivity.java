@@ -11,6 +11,9 @@ import com.percolate.codetest.utils.Constants;
 import com.percolate.codetest.R;
 import com.percolate.codetest.fragment.DetailFragment;
 
+/**
+ * Detail Activity
+ */
 public class DetailActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
